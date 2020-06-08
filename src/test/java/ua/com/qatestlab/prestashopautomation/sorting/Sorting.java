@@ -34,7 +34,7 @@ public class Sorting {
     }
 
     public void sortByCriteria(String criteria) {
-        logger.info("Select some item from the sort menu");
+        logger.info("Select item " + criteria + " from the sort menu");
         if (criteria.equals(DESCENDING_PRICE)) sorting.click();
     }
 
