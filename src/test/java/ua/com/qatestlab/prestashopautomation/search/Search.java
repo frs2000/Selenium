@@ -29,7 +29,7 @@ public class Search {
     private List<WebElement> productsFound;
 
     public void enterWord(String keyword) {
-        logger.info("Enter word into the search bar");
+        logger.info("Enter word '" + keyword + "' into the search bar");
         enterWord.sendKeys(keyword);
     }
 
