@@ -1,11 +1,9 @@
 package ua.com.qatestlab.prestashopautomation.currency;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Currency {
@@ -29,8 +27,6 @@ public class Currency {
     @FindBy(css = "#_desktop_currency_selector > div > ul > li:nth-child(3)")
     private WebElement currencyUSD;
 
-    private By menu = By.cssSelector("#_desktop_currency_selector > div > a > i");
-
     public String getHeaderCurrency() {
         logger.info("Getting currency from the header");
         String currency = headerCurrency.getText();
@@ -43,14 +39,7 @@ public class Currency {
     }
 
     public void setCurrency(String currency) {
-        waitingForBlockLoading();
-
         logger.info("Choosing " + currency + " currency");
         if (currency.equals(USD)) currencyUSD.click();
-    }
-
-    private void waitingForBlockLoading() {
-        logger.info("Waiting for currency block loading");
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(menu));
     }
 }
