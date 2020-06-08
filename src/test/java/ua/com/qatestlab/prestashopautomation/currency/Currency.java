@@ -4,18 +4,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Currency {
 
     private final static Logger logger = Logger.getLogger(Currency.class);
     private final static String USD = "$";
     private WebDriver driver;
-    private WebDriverWait webDriverWait;
 
     public Currency(WebDriver driver) {
         this.driver = driver;
-        webDriverWait = new WebDriverWait(driver, 10);
     }
 
     @FindBy(css = "span.expand-more._gray-darker.hidden-sm-down")
