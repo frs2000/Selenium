@@ -30,6 +30,7 @@ public class Search {
 
     public void enterWord(String keyword) {
         logger.info("Enter word into the search bar");
+        enterWord.sendKeys(keyword);
     }
 
     public void pressEnter() {
