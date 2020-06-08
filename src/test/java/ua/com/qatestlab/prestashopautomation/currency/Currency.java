@@ -45,7 +45,7 @@ public class Currency {
     public void setCurrency(String currency) {
         waitingForBlockLoading();
 
-        logger.info("Choosing some new currency");
+        logger.info("Choosing " + currency + " currency");
         if (currency.equals(USD)) currencyUSD.click();
     }
 
