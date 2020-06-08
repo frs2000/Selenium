@@ -1,6 +1,7 @@
 package ua.com.qatestlab.prestashopautomation.currency;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,11 +19,13 @@ public class Currency {
     @FindBy(css = "span.expand-more._gray-darker.hidden-sm-down")
     private WebElement headerCurrency;
 
-    @FindBy(css = "#_desktop_currency_selector > div > a > i")
+    @FindBy(id = "_desktop_currency_selector")
     private WebElement currenciesMenu;
 
-    @FindBy(css = "#_desktop_currency_selector > div > ul > li:nth-child(3)")
+    @FindBy(css = "a[title=\"Доллар США\"]")
     private WebElement currencyUSD;
+
+    private By button = By.cssSelector("i.material-icons.expand-more");
 
     public String getHeaderCurrency() {
         logger.info("Getting currency from the header");
@@ -31,7 +34,7 @@ public class Currency {
     }
 
     public void openCurrenciesMenu() {
-        currenciesMenu.click();
+        currenciesMenu.findElement(button).click();
         logger.info("Opened currency menu in the header");
     }
 
