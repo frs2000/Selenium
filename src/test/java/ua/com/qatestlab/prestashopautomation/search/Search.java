@@ -1,6 +1,7 @@
 package ua.com.qatestlab.prestashopautomation.search;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,11 +23,13 @@ public class Search {
     @FindBy(css = "button")
     private WebElement pressEnter;
 
-    @FindBy(css = "#js-product-list-top > div.col-md-6.hidden-sm-down.total-products > p")
-    private WebElement productsFoundInfo;
+    @FindBy(id = "products")
+    private WebElement products;
 
     @FindBy(className = "thumbnail-container")
     private List<WebElement> productsFound;
+
+    private By productsFoundInfo = By.cssSelector("div.col-md-6.hidden-sm-down.total-products");
 
     public void enterWord(String keyword) {
         logger.info("Enter word '" + keyword + "' into the search bar");
@@ -45,7 +48,7 @@ public class Search {
 
     public String getProductsFoundInfo() {
         logger.info("Get line with information about number of found products");
-        return productsFoundInfo.getText();
+        return products.findElement(productsFoundInfo).getText();
     }
 
     public int getFoundProductsCount() {
