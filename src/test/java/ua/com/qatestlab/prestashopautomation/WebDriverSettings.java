@@ -2,7 +2,10 @@ package ua.com.qatestlab.prestashopautomation;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import java.util.concurrent.TimeUnit;
 
 public class WebDriverSettings {
 
@@ -15,6 +18,7 @@ public class WebDriverSettings {
     public void setUp() {
         System.setProperty(WEBDRIVER_KEY, PATH_TO_WEBDRIVER);
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @AfterMethod
